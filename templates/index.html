@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Flask Page Task Master</title>
+{% endblock %}
+
+{% block body %} 
+
+      <main role="main" class="container cover">
+          <div class="output_text">
+            {{prediction_text}}
+          </div> 
+          <h1 class="cover-heading">Predict Delhi House Price</h1>
+          <p >You can predict prices of house with this application <br class="d-md-block d-none"> which is based on machine learning and powered with very good quality of data.</p>
+          <div class="lead">
+            <h2 class="d-md-block d-none">Learn more -</h2>
+            <div class="d-md-block d-none">
+              <a class="btn btn-secondary mb-lg-0 mb-1" target="_blank" href="{{ url_for('static', filename='/delhi_data_eda.html')}}"><b>iPython Notebook</b></a>
+              <a class="btn btn-secondary" target="_blank" href="{{ url_for('static', filename='/delhi_data_eda_sweetviz.html')}}"><b>Exploratory Data Analysis (EDA)</b></a>
+            </div><br>
+            <a class="btn btn-lg btn-secondary" href="#predict"><b>Predict</b></a>
+          </div>
+        </main>
+
+        <hr style="border-top: 1px solid #ffffff44;">
+
+      <section class="container cover" id="predict">
+        <h1 class="">Predict Delhi House Price</h1>
+        <form action='{{ url_for("predict")}}' method='post'>
+          <div class="form-row">
+            <div class="col-md-6 col-12 mb-3">
+              <input type="number" class="form-control" name="area" id="area" placeholder="Area (i.e 500-9500) sq ft" min="100" max="10000" required>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+              <input type="number" class="form-control" name="pincode" id="pincode" placeholder="Pincode" required>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+              <input class="form-control" placeholder="Delhi NCR" disabled>
+            </div>
+            <div class="col-md-6 col-12 mb-3">
+              <!-- <input type="text" class="form-control" id="validationDefault02" value="Otto" required> -->
+              <select class="form-control" name="Bedrooms" required>
+                <option value="" >Bedrooms</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+              </select>
+            </div>
+            <div class="col-md-6 col-12 mb-3">
+              <!-- <input type="text" class="form-control" id="validationDefault02" value="Otto" required> -->
+              <select class="form-control" name="Bathrooms" required>
+                <option value="" selected>Bathrooms</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+              </select>
+            </div>
+            <div class="col-md-4 col-12 mb-3">
+              <select class="form-control" name="Status" required>
+                <option value="" selected>Status</option>
+                <option value="1">Ready To move</option>
+                <option value="0" >Under Construction</option>
+              </select>
+            </div>
+            <div class="col-md-4 col-12 mb-3">
+              <select class="form-control" name="neworold" required>
+                <option value="" selected>Old Or New</option>
+                <option value="0">Old</option>
+                <option value="1" >New</option>
+              </select>
+            </div>
+            <div class="col-md-4 col-12 mb-3">
+              <select class="form-control" name="type_of_building" required>
+                <option value="" selected>Type Of Building</option>
+                <option value="0">Flat</option>
+                <option value="1" >Individual House</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-lg btn-secondary" type="submit"><b>Predict</b></button>
+        </form>      
+      </section>
+
+          
+      
+
+      <footer class="container text-center mt-auto pb-3">
+        <div>
+          <p> Delhi House Price Prediction, <br class="d-md-none d-block"> by Udbhav Rohatgi Roll No - 71.</p>
+        </div>
+      </footer>
+    <!-- </div> -->
+
+{% endblock %}
